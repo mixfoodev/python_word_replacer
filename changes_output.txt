@@ -1,2 +1,4 @@
 Directory: D:\myprojects\python\apo desktop\python\python file content renamer\renamer\sample_parent_folder\
-new_file.txt replacements(6): [sample_text_old->sample_text_new(2), sample word->replacement(2), old_text->new_text(2)]
+new_file.txt replacements(4): [sample_text_new->sample_text_old(1), replacement->sample word(1), new_text->old_text(1), renamed->this_will_be_renamed(1)]
+subfolder\file2.txt replacements(3): [sample_text_new->sample_text_old(1), replacement->sample word(1), new_text->old_text(1)]
+subfolder\renamed.txt->(this_will_be_renamed) replacements(1): [renamed->this_will_be_renamed(1)]
