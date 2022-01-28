@@ -185,9 +185,11 @@ files_to_edit=[]
 # If true, the keys gets replaced by the values.
 KEYS_TO_VALUES = True 
 
-# The parent folder where we start searching.
-#SEARCH_PATH = r'../sample_parent_folder'+ os.path.sep
+# This is the current directory in order for the sample to work
 SEARCH_PATH = os.path.abspath(os.getcwd()) + os.path.sep + "sample_parent_folder" +os.path.sep
+
+# The parent folder where we start searching. Replace it with your directory
+#SEARCH_PATH = r'path/to/your/folder'+ os.path.sep
 
 # The file that contains changes in key/value pairs in each line
 WORDS_FILE = "words.txt"
