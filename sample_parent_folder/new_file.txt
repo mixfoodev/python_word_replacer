@@ -1,0 +1,10 @@
+This is a sample file. Words to be replaced: old_text, sample_text_old, sample word.
+
+old_text->new_text
+sample_text_old->sample_text_new
+sample word->replacement
+
+FILEPATH = "filepath"
+NEEDS_EDIT = "needs_edit"
+NEEDS_RENAME = "needs_rename"
+WORD_REFS = "refs"

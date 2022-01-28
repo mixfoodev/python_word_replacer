@@ -1,0 +1,3 @@
+old_text:new_text
+sample_text_old:sample_text_new
+sample word:replacement
