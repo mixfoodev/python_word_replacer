@@ -1,5 +1,3 @@
-# README
-
 This is a simple Python script that can rename multiple filenames and replace multiple words in files.
 
 **How it works**
