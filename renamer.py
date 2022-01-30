@@ -205,7 +205,7 @@ FILE_TYPES = ["txt"]
 
 # If a replaceable word has a char from this list before or after it, it will be replaced, else will be ignored.
 #CHARS_NEIGHBOURS_ALLOWED = list(" ,./*-+()[]{\}?@!=<>&$#%|;:\"")
-CHARS_NEIGHBOURS_ALLOWED = list(" ,.")
+CHARS_NEIGHBOURS_ALLOWED = list(" ,.\n")
 
 # Starts the script
 run()
