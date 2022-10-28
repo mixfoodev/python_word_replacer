@@ -1,4 +1,2 @@
-old_text:new_text
-sample_text_old:sample_text_new
-sample word:replacement
-this_will_be_renamed:renamed
+John:Mike
+Foo:Bar

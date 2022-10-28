@@ -1,4 +1,5 @@
 import os
+from config import *
 
 
 def print_changes():
@@ -14,12 +15,12 @@ def write_changes_to_file(words):
             line = file[FILEPATH].replace(SEARCH_PATH, "")
             if file[NEEDS_RENAME]:
                 filename = file[FILEPATH].split(os.path.sep)[-1].split(".")[0]
-                line += "->(%s)" % words[filename]
+                line += "-> (%s)" % words[filename]
             if len(file[WORD_REFS]) > 0:
                 total_refs = sum([file[WORD_REFS][ref] for ref in file[WORD_REFS]])
                 line += " replacements(%s): [" % total_refs
                 for ref in file[WORD_REFS]:
-                    line += "%s->%s(%s)" % (ref,words[ref],file[WORD_REFS][ref]) 
+                    line += "%s-> %s(%s)" % (ref,words[ref],file[WORD_REFS][ref]) 
                     if ref != list(file[WORD_REFS].keys())[-1]:
                         line += ", "
                     else: line += ']'
@@ -117,7 +118,6 @@ def get_sorted_words(words):
     return dict(sorted(words.items(), key = lambda x: len(x[0]), reverse = True))
 
 def load_words_from_file():
-    
     if not os.path.isfile(WORDS_FILE):
         print("\nERROR: WORDS_FILE is not a valid file.")
         exit()
@@ -128,9 +128,9 @@ def load_words_from_file():
     
     with open(WORDS_FILE,"r",encoding="utf-8") as f:
         raw = [l.strip() for l in f.readlines() if l.strip() != '']    
-    if len(raw) == 0 :
-            print("\nERROR: No words found in %s.\n" % WORDS_FILE)
-            exit() 
+        if len(raw) == 0 :
+                print("\nERROR: No words found in %s.\n" % WORDS_FILE)
+                exit() 
 
     try:
         if KEYS_TO_VALUES:
@@ -144,7 +144,7 @@ def load_words_from_file():
         
     if len(words) != len(raw):
         print("\nERROR: Replace keys are not unique in '%s'." % WORDS_FILE)
-        keys = [item.split("=")[0] for item in raw]
+        keys = [item.split(KEY_VALUE_SEPERATOR)[0] for item in raw]
         doubles = set(x for x in keys if keys.count(x) > 1)
         print( "Not unique values: %s" % doubles)
         exit()
@@ -178,34 +178,9 @@ NEEDS_EDIT = "needs_edit"
 NEEDS_RENAME = "needs_rename"
 WORD_REFS = "word_refs"
 scanned_files = 0 
-files_to_edit=[]
+files_to_edit = []
 
-### SETTINGS ###
 
-# If true, the keys gets replaced by the values.
-KEYS_TO_VALUES = True 
-
-# This is the current directory in order for the sample to work
-SEARCH_PATH = os.path.abspath(os.getcwd()) + os.path.sep + "sample_parent_folder" +os.path.sep
-
-# The parent folder where we start searching. Replace it with your directory
-#SEARCH_PATH = r'path/to/your/folder'+ os.path.sep
-
-# The file that contains changes in key/value pairs in each line
-WORDS_FILE = "words.txt"
-
-# The seperator of key/value pair in the file, eg. word:replacement
-KEY_VALUE_SEPERATOR= ":"
-
-# If a folder name, inside parent directory, matches an entry then this folder will be ignored
-IGNORE_FOLDERS = ["some_folder"]
-
-# File types we want to edit
-FILE_TYPES = ["txt"]
-
-# If a replaceable word has a char from this list before or after it, it will be replaced, else will be ignored.
-#CHARS_NEIGHBOURS_ALLOWED = list(" ,./*-+()[]{\}?@!=<>&$#%|;:\"")
-CHARS_NEIGHBOURS_ALLOWED = list(" ,.\n")
 
 # Starts the script
 run()

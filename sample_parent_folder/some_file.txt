@@ -1,0 +1,4 @@
+This is a sample file. Words to be replaced: John, Foo.
+
+Allowed_neighbour_characters list in config.py allows you to control what instances of a word will be replaced.
+For example, the following words will not be replaced -John,Foo- unless you add the character '-' to the list and KEYS_TO_VALUES equals True.
